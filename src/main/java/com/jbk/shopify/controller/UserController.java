@@ -1,5 +1,7 @@
 package com.jbk.shopify.controller;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -32,9 +34,11 @@ public class UserController {
 	}
 	
 	@GetMapping("alluser")
-	public String getAllUser() {
+	public String getAllUser(Model model) {
 		
-		return null;
+		List<User> allUser = service.getAllUser();
+		model.addAttribute("users", allUser);
+		return "userlist";
 		
 	}
 	
